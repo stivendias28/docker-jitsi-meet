@@ -6,8 +6,8 @@ services:
         image: jitsi/web:${JITSI_IMAGE_VERSION:-unstable}
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
-            - '${HTTP_PORT}:80'
-            - '${HTTPS_PORT}:443'
+            - '${HTTP_PORT}:82'
+            - '${HTTPS_PORT}:400'
         volumes:
             - ${CONFIG}/web:/config:Z
             - ${CONFIG}/web/crontabs:/var/spool/cron/crontabs:Z
@@ -316,7 +316,7 @@ services:
         image: jitsi/jicofo:${JITSI_IMAGE_VERSION:-unstable}
         restart: ${RESTART_POLICY:-unless-stopped}
         ports:
-            - '127.0.0.1:${JICOFO_REST_PORT:-8888}:8888'
+            - '0.0.0.5:${JICOFO_REST_PORT:-8200}:8400'
         volumes:
             - ${CONFIG}/jicofo:/config:Z
         environment:
